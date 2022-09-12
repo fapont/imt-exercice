@@ -82,7 +82,3 @@ Cette section vous propose d'explorer différents sujets auxquels des ingénieur
   - `Distillation`: entraîner un réseau de neurones plus petit à répliquer les décisions d'un gros réseau
   - Utilisation de GPU pour effectuer l'inférence (pour processer des images ou du texte c'est indispensable)
 - Lorsqu'on cherche à améliorer notre modèle il est courant d'augmenter la taille de notre jeu de de données d'entrainement, de rechercher les meilleurs hyperparamètres, de repenser l'architecture, ... De fait, on ne peut pas se permettre de repasser par la phase exploratoire dans un Jupyter Notebook, de réentrainer notre modèle, de le packager et de remplacer le modèle existant par le nouveau. En pratique toutes ces étapes sont automatisées grâce à des pipelines spécifiques. Cette automatisation rentre dans le scope du `MLOps` (Machine Learning Operations). On vous invite à vous renseigner sur ces principes grâce à cet excellent site https://ml-ops.org/. Cette discipline est à cheval entre plusieurs métier: `Data Scientist`, `Data Engineer`, `Software Engineer` et `DevOps`.
-
-# TODO
-
-- trouver les données code postal
