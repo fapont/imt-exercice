@@ -31,20 +31,21 @@ Les données utilisées pour notre TP sont issues du jeu de données publique de
 
 Afin de développer le backend de notre application web nous utilisons le [framework Flask](https://flask.palletsprojects.com/en/2.2.x/). L'objectif de cette partie est de comprendre le fonctionnement des serveurs Web et de s'en servir pour appeler notre modèle et faire de l'inférence.
 
-1. Lancez le fichier `app.py` avec la commande `python3 app.py`. Votre serveur web va se lancer et être accessible via des requêtes HTTP. Vérifiez que la connexion à votre serveur fonctionne:
+1. Lancez le fichier `app.py` avec la commande `python3 app.py`. Votre serveur web va se lancer et être accessible via des requêtes HTTP. Vérifiez que la connexion à votre serveur fonctionne (Linux/Mac users):
 
 ```
 curl localhost:5678
 ```
 
-ou directement depuis votre navigateur http://localhost:5678/.
+ou directement depuis votre navigateur http://localhost:5678/hello. Il est possible qu'une URL différente de `localhost` soit affichée dans la console ayant servi à lancer votre programme, dans ce cas utilisez cette dernière.
 
 **Notes**
 
 - `curl` est un outil nous servant ici de client `HTTP`
 - Comme vous pouvez le remarquer lorsque l'on utilise la commande `curl`, la donnée reçue est `<h1>Hello world</h1>`. Lorsque l'on ouvre notre navigateur on peut y voir apparaitre un magnifique **Hello world** formaté. Votre navigateur vous permet de formatter le HTML que vous recevez à l'écran mais ce dernier n'est rien de plus qu'un client HTTP aggrémenté de fonctions d'affichages.
 
-2. Dans le dossier `templates` vous trouverez un fichier _index.html_ qui contient un code HTML un peu plus complexe qu'un simple Hello World. Créer une nouvelle route `/app` permettant de renvoyer à l'utilisateur le contenu de la page _index.html_. Vérifier que votre code fonctionne en vous rendant à l'adresse suivante sur votre navigateur: http://localhost:5678/app.
+2. Dans le dossier `templates` vous trouverez un fichier _index.html_ qui contient un code HTML un peu plus complexe qu'un simple Hello World. Créer une nouvelle route `/app` permettant de renvoyer à l'utilisateur le contenu de la page _index.html_. Il est possible d'utiliser la fonction `render_template` de Flask.
+   Vérifier que votre code fonctionne en vous rendant à l'adresse suivante sur votre navigateur: http://localhost:5678/app.
 
 3. Créer une nouvelle route `/predict` permettant à l'utilisateur de passer des données via un [`form`](https://www.w3schools.com/html/html_forms.asp) (requête POST ou GET à votre avis ?). Cette route devra effectuer dans l'odre:
 
@@ -61,7 +62,7 @@ ou directement depuis votre navigateur http://localhost:5678/.
 curl -X POST -d "postcode=75&house_type=Maison&house_surface=130&nb_room=5&garden_area=300"  localhost:5678/predict
 ```
 
-Ou bien testez directement depuis la page web !
+Ou bien testez directement depuis la page web en remplissant le formulaire !
 
 ## Partie 3: Intégrez le code postal à votre model
 
