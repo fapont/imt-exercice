@@ -2,39 +2,58 @@
 
 Création d'une application web permettant de prédire le prix d'un bien immobilier à partir de certaines caractéristiques.
 
+# Ressources
+
+Durant ce TP vous aurez besoin d'être familier avec les éléments suivants:
+
+- [`Scikit-Learn`](https://scikit-learn.org/stable/) qui est une librairie Python permettant de facilement utiliser des modèles de Machine Learning.
+- [`Pickle`](https://docs.python.org/3/library/pickle.html) permet de sérialiser des objets Python (transformation d'une structure Python en un fichier pouvant être stocké puis reconstruit).
+- [`Pandas`](https://pandas.pydata.org/) une librairie permettant de manipuler des DataFrame très facilement.
+- [`Flask`](https://flask.palletsprojects.com/en/2.2.x/) est un framework de développement d'appication Web idéal pour créer des APIs.
+
+Afin d'installer facilement tous les packages nécessaires vous pouvez utiliser la commande:
+
+```
+pip install -r requirements.txt
+ou
+python3 -m pip install -r requirements.txt
+```
+
+# Données
+
+Les données utilisées pour notre TP sont issues du jeu de données publique des [valeurs foncières françaises de 2021](https://www.data.gouv.fr/en/datasets/demandes-de-valeurs-foncieres/). Ces données ont été retravaillées pour vous et se trouvent dans le fichier `data.csv`.
+
 # Déroulement du TP
 
 ## Partie 1: création du modèle
 
-**Objectif**: à partir des données disponibles, entrainez et sauvegardez un modèle prédictif afin de pouvoir le réutiliser facilement.
-
-**Données**: les données utilisées pour notre TP sont issues du jeu de données publique des [valeurs foncières françaises de 2021](https://www.data.gouv.fr/en/datasets/demandes-de-valeurs-foncieres/). Ces données ont été retravaillées pour vous et se trouvent dans le fichier `data.csv`. \
 **Dans un premier temps nous supprimerons la variable `postcode`**
 
-1. Pour l'instant le preprocessing de nos données se limite à un encodage de la variable `house_type`. Complétez la fonction _transform_house_type_ (de manière simple, ce n'est pas la peine d'utiliser `sklearn`)
+1. Pour l'instant le preprocessing de nos données se limite à un encodage de la variable `house_type`. Complétez la fonction `transform_house_type` (de manière simple, on cherche à créer une fonction d'encodage de notre variable)
 
-2. Lors de ce tp nous ne cherchons pas à optimiser notre modèle avec les meilleurs hyperparamètres. De ce fait, séparez vos prédicteurs de la valeur à prédire et entraînez un modèle linéaire sur toute les données.
+2. Lors de ce tp nous ne cherchons pas à optimiser notre modèle avec les meilleurs hyperparamètres. De ce fait, séparez vos prédicteurs de la valeur à prédire et entraînez un modèle linéaire sur toute les données. Vous pouvez utiliser la [régression linéaire](https://scikit-learn.org/stable/modules/generated/sklearn.linear_model.LinearRegression.html).
 
-3. Lorsque votre modèle est entraîné, sauvegarder ce dernier au format [`pickle`](https://docs.python.org/3/library/pickle.html), appelez le `model.pkl` par exemple.
+3. Lorsque votre modèle est entraîné, sauvegarder ce dernier au format [`pickle`](https://docs.python.org/3/library/pickle.html), appelez le `model.pkl` par exemple. Cette méthode vous permet de sauvegarder votre modèle entraîné dans un fichier qui pourra être utilisé dans notre application web.
 
 ## Partie 2: création d'une webapp
 
 Afin de développer le backend de notre application web nous utilisons le [framework Flask](https://flask.palletsprojects.com/en/2.2.x/). L'objectif de cette partie est de comprendre le fonctionnement des serveurs Web et de s'en servir pour appeler notre modèle et faire de l'inférence.
 
-1. Lancez le fichier `app.py` avec la commande `python3 app.py`. Votre serveur web va se lancer et être accessible via des requêtes HTTP. Vérifiez que la connexion à votre serveur fonctionne:
+1. Lancez le fichier `app.py` avec la commande `python3 app.py`. Votre serveur web va se lancer et être accessible via des requêtes HTTP. Vérifiez que la connexion à votre serveur fonctionne (Linux/Mac users):
 
 ```
 curl localhost:5678
 ```
 
-ou directement depuis votre navigateur http://localhost:5678/.
+ou directement depuis votre navigateur http://localhost:5678/hello. Il est possible qu'une URL différente de `localhost` soit affichée dans la console ayant servi à lancer votre programme, dans ce cas utilisez cette dernière.
 
 **Notes**
 
 - `curl` est un outil nous servant ici de client `HTTP`
 - Comme vous pouvez le remarquer lorsque l'on utilise la commande `curl`, la donnée reçue est `<h1>Hello world</h1>`. Lorsque l'on ouvre notre navigateur on peut y voir apparaitre un magnifique **Hello world** formaté. Votre navigateur vous permet de formatter le HTML que vous recevez à l'écran mais ce dernier n'est rien de plus qu'un client HTTP aggrémenté de fonctions d'affichages.
 
-2. Dans le dossier `templates` vous trouverez un fichier _index.html_ qui contient un code HTML un peu plus complexe qu'un simple Hello World. Créer une nouvelle route `/app` permettant de renvoyer à l'utilisateur le contenu de la page _index.html_. Vérifier que votre code fonctionne en vous rendant à l'adresse suivante sur votre navigateur: http://localhost:5678/app.
+2. Dans le dossier `templates` vous trouverez un fichier _index.html_ qui contient un code HTML un peu plus complexe qu'un simple Hello World. Créer une nouvelle route `/app` permettant de renvoyer à l'utilisateur le contenu de la page _index.html_. Il est possible d'utiliser la fonction `render_template` de Flask.
+   Vérifier que votre code fonctionne en vous rendant à l'adresse suivante sur votre navigateur: http://localhost:5678/app.
 
 3. Créer une nouvelle route `/predict` permettant à l'utilisateur de passer des données via un [`form`](https://www.w3schools.com/html/html_forms.asp) (requête POST ou GET à votre avis ?). Cette route devra effectuer dans l'odre:
 
@@ -51,7 +70,7 @@ ou directement depuis votre navigateur http://localhost:5678/.
 curl -X POST -d "postcode=75&house_type=Maison&house_surface=130&nb_room=5&garden_area=300"  localhost:5678/predict
 ```
 
-Ou bien testez directement depuis la page web !
+Ou bien testez directement depuis la page web en remplissant le formulaire !
 
 ## Partie 3: Intégrez le code postal à votre model
 
