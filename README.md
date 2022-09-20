@@ -80,7 +80,7 @@ Maintenant que vous avez réussi à déployer votre première webapp faisant app
 
 1. Récupérez des données permettant d'enrichir votre jeu de données d'entrainement à partir des codes postaux. Refaire toute la première partie en prenant en compte votre/vos nouvelle(s) variable(s).
 
-2. Retravaillez votre backend pour prendre en compte cette nouvelle variable. Il vous faudra revoir votre `preprocessing` pour y ajouter l'enrichissement de données, et votre étape de `validation` des données.
+2. Retravaillez votre backend pour prendre en compte cette nouvelle variable. Il vous faudra revoir votre `preprocessing` pour y ajouter l'enrichissement de données, et votre étape de `validation` des données. Les données peuvent être enrichies en ajoutant de nouvelles features, il est possible d'utiliser ce [dataset](https://www.insee.fr/fr/statistiques/4265429?sommaire=4265511) pour ajouter une colonne correspondant au nombre d'habitants par commune. 
 
 3. Modifier l'interface web pour ajouter un nouveau champ au formulaire. Un peu de HTML ça ne fait pas de mal 😃
 
