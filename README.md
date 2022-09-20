@@ -4,7 +4,9 @@ Création d'une application web permettant de prédire le prix d'un bien immobil
 
 # Ressources
 
-Durant ce TP vous aurez besoin d'être familier avec les éléments suivants:
+Pour réaliser ce TP vous aurez besoin d'avoir [Python](https://www.python.org/downloads/) installé sur votre ordinateur, ainsi que de pouvoir ouvrir et exécuter un Jupyter notebook. Nous vous conseillons d'installer [VsCode](https://code.visualstudio.com/), un éditeur de code développé par Microsoft, afin de faciliter ce travail.
+
+De plus vous aurez besoin d'être familier avec les éléments suivants:
 
 - [`Scikit-Learn`](https://scikit-learn.org/stable/) qui est une librairie Python permettant de facilement utiliser des modèles de Machine Learning.
 - [`Pickle`](https://docs.python.org/3/library/pickle.html) permet de sérialiser des objets Python (transformation d'une structure Python en un fichier pouvant être stocké puis reconstruit).
