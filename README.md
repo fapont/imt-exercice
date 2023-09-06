@@ -16,13 +16,40 @@ De plus vous aurez besoin d'être familier avec les éléments suivants:
 - [`Pandas`](https://pandas.pydata.org/) une librairie permettant de manipuler des DataFrame très facilement.
 - [`Flask`](https://flask.palletsprojects.com/en/2.2.x/) est un framework de développement d'appication Web idéal pour créer des APIs.
 
-Afin d'installer facilement tous les packages nécessaires vous pouvez utiliser la commande:
+# Installation
 
+**Toutes les commandes suivantes sont à exécuter dans un terminal qui peut être lancé sur VSCode**
+
+1. Vous pouvez cloner ce repository en utilisant la commande:
+
+```bash
+git clone git@github.com:fapont/imt-exercice.git
 ```
+
+Cela va créer un dossier `imt-exercice` contenant tous les fichiers nécessaires pour ce TP.
+
+2. Si Python n'est pas installé sur votre ordinateur, vous pouvez le faire en suivant [ce tutoriel](https://realpython.com/installing-python/).
+   Sur les machines utilisées à l'IMT, Python est déjà installé. Vous pouvez vérifier que Python est bien installé en utilisant la commande:
+
+```bash
+python --version
+ou
+python3 --version
+```
+
+3. Installer les dépendances nécessaires pour ce TP.
+
+```bash
+cd imt-exercice # Se placer dans le dossier du TP
 pip install -r requirements.txt
 ou
 python3 -m pip install -r requirements.txt
 ```
+
+_Note_: `pip` est un outil permettant d'installer des packages Python.
+
+4. Tout est prêt ! Vous pouvez ouvrir le fichier `main.ipynb` et commencer le TP.
+   Le fichier `main.ipynb` est un Jupyter Notebook. C'est un outil très pratique pour faire du développement itératif. Il permet d'exécuter du code Python par bloc et de visualiser les résultats directement dans le notebook.
 
 # Données
 
@@ -89,7 +116,7 @@ Maintenant que vous avez réussi à déployer votre première webapp faisant app
 
 Cette section vous propose d'explorer différents sujets auxquels des ingénieurs dans le data sont confrontés. L'objectif est de vous exposer ces problématiques et libre à vous de creuser les sujets qui vous intéressent les plus.
 
-- Aujourd'hui notre application nécessite Python et plusieurs dépendances pour fonctionner correctement. Dans un contexte de production il est courant de ne pas savoir exactement sur quelle machine tourne son programme (ex: Kubernetes choisi parmi un cluster de machine). Il est impensable de devoir installer toutes les dépendances de tous nos programmes sur toutes les machines ! C'est pour répondre à cette problématique que [Docker](https://www.docker.com/) a été créé. Il permet de créer des images qui vont empaquêter toutes les dépendances et le code nécessaire pour faire fonctionner notre application. L'objectif est de créer une image Docker permettant de faire fonctionner notre application web correctement. Vous pouvez vous inspirer de [ce tutoriel](https://www.digitalocean.com/community/tutorials/how-to-build-and-deploy-a-flask-application-using-docker-on-ubuntu-20-04).
+- Aujourd'hui notre application nécessite Python et plusieurs dépendances pour fonctionner correctement. Dans un contexte de production il est courant de ne pas savoir exactement sur quelle machine tourne son programme (ex: Kubernetes choisi parmi un cluster de machine). Il est impensable de devoir installer toutes les dépendances de tous nos programmes sur toutes les machines ! C'est pour répondre à cette problématique que [Docker](https://www.docker.com/) a été créé. Il permet de créer des images qui vont empaquêter toutes les dépendances e^t le code nécessaire pour faire fonctionner notre application. L'objectif est de créer une image Docker permettant de faire fonctionner notre application web correctement. Vous pouvez vous inspirer de [ce tutoriel](https://www.digitalocean.com/community/tutorials/how-to-build-and-deploy-a-flask-application-using-docker-on-ubuntu-20-04).
 - `sklearn` a développé un objet [`Pipeline`](https://scikit-learn.org/stable/modules/generated/sklearn.pipeline.Pipeline.html) qui permet d'aggréger les étapes de preprocessing et de prediction au sein d'un même objet. Il est tout à fait possible (et même recommandé) de sérializer (avec `pickle` par exemple) le modèle accompagné de sa pipeline de traitement.
   1. Plutôt que d'implémenter plusieurs fonctions comme `transform_house_type`, implémenter une pipeline de traitement en utilisant les transformeurs de `sklearn`.
   2. Rajoutez une étape de standardisation des données numérique. L'objet [`StandardScaler`](https://scikit-learn.org/stable/modules/generated/sklearn.preprocessing.StandardScaler.html#sklearn.preprocessing.StandardScaler) le fera très bien pour vous et vous permettra de conserver l'écart-type et la variance de votre jeu d'entraînement (qui doit être réutilisée pour standardiser vos données de test !!)
