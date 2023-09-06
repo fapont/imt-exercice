@@ -1,6 +1,48 @@
 # Objectif
 
-Création d'une application web permettant de prédire le prix d'un bien immobilier à partir de certaines caractéristiques.
+Création d'une application web permettant de prédire le prix d'un bien immobilier à partir de certaines caractéristiques. L'objectif de ce TP est de vous familiariser avec les problématiques de déploiement d'un modèle de Machine Learning. Ce TP se déroule en 2 parties:
+
+1. Création d'un modèle de Machine Learning permettant de prédire le prix d'un bien immobilier
+2. Création d'une webapp permettant de faire appel à ce modèle
+
+## Modèle de Machine Learning
+
+### Introduction
+
+On appelle `modèle` de Machine Learning une fonction mathématique qui prend en entrée des données et qui renvoie une prédiction. Dans notre cas, notre modèle prendra en entrée les caractéristiques d'un bien immobilier (surface, nombre de pièces, ...) et renverra une estimation du prix de ce bien.
+
+On distingue 2 grandes familles de modèles de Machine Learning:
+
+- Les modèles de `régression` qui permettent de prédire une valeur continue (ex: prix d'un bien immobilier)
+- Les modèles de `classification` qui permettent de prédire une valeur discrète (ex: prédire si un mail est un spam ou non)
+
+Dans notre cas nous allons utiliser un modèle de régression linéaire. Ce modèle est très simple et permet de prédire une valeur continue à partir d'une combinaison linéaire de nos variables d'entrée. Dans notre cas, notre modèle prendra la forme suivante:
+
+```
+prix = w1 * surface + w2 * nb_room + w3 * garden_area + w4 * house_type + w5 * postcode + b
+```
+
+Où `w1`, `w2`, `w3`, `w4`, `w5` et `b` sont des paramètres que l'on va chercher à apprendre à partir de nos données d'entrainement.
+
+Pour plus d'informations sur les modèles de régression linéaire vous pouvez consulter [cette page](https://www.voxco.com/fr/blog/comment-calculer-la-regression-lineaire/) qui explique comment calculer les paramètres de notre modèle.
+
+_Note_: dans notre cas nous utiliserons une régression linéaire multiple car nous avons plusieurs variables d'entrée. Si nous n'avions qu'une seule variable d'entrée nous parlerions de régression linéaire simple.
+
+### Préparation des données
+
+Avant de pouvoir entraîner notre modèle nous devons préparer nos données. Cette étape est très importante et peut prendre beaucoup de temps (en général la majorité du temps). En effet, les données que nous avons récupérées ne sont pas forcément exploitables directement par notre modèle. Il est donc nécessaire de les transformer afin de pouvoir les utiliser.
+
+#### Encodage des variables catégorielles
+
+Il est important de comprendre que les modèles de Machine Learning ne peuvent pas prendre en entrée n'importe quel type de données. Dans notre cas, notre modèle ne peut pas prendre en entrée des chaînes de caractères (ex: `Maison`, `Appartement`, ...). Il est donc nécessaire de transformer ces chaînes de caractères en nombres. On appelle cette étape `encodage`.
+
+Il existe plusieurs manières d'encoder des données: `label encoding`, `one-hot encoding`, ... (pour plus d'informations vous pouvez consulter [cette page](https://inria.github.io/scikit-learn-mooc/python_scripts/03_categorical_pipeline.html)).
+
+Dans notre cas, étant donné que notre variable `house_type` ne peut prendre que 2 valeurs (`Maison` ou `Appartement`) nous allons utiliser un `label encoding`. Cet encodage consiste à remplacer chaque valeur unique de notre variable par un nombre. Dans notre cas, nous allons remplacer `Maison` par `0` et `Appartement` par `1`.
+
+De cette manière notre modèle pourra prendre en entrée des nombres et non plus des chaînes de caractères.
+
+#### Normalisation des variables numériques
 
 # Ressources
 
@@ -80,7 +122,7 @@ Maintenant que vous avez réussi à déployer votre première webapp faisant app
 
 1. Récupérez des données permettant d'enrichir votre jeu de données d'entrainement à partir des codes postaux. Refaire toute la première partie en prenant en compte votre/vos nouvelle(s) variable(s).
 
-2. Retravaillez votre backend pour prendre en compte cette nouvelle variable. Il vous faudra revoir votre `preprocessing` pour y ajouter l'enrichissement de données, et votre étape de `validation` des données. Les données peuvent être enrichies en ajoutant de nouvelles features, il est possible d'utiliser ce [dataset](https://www.insee.fr/fr/statistiques/4265429?sommaire=4265511) pour ajouter une colonne correspondant au nombre d'habitants par commune. 
+2. Retravaillez votre backend pour prendre en compte cette nouvelle variable. Il vous faudra revoir votre `preprocessing` pour y ajouter l'enrichissement de données, et votre étape de `validation` des données. Les données peuvent être enrichies en ajoutant de nouvelles features, il est possible d'utiliser ce [dataset](https://www.insee.fr/fr/statistiques/4265429?sommaire=4265511) pour ajouter une colonne correspondant au nombre d'habitants par commune.
 
 3. Modifier l'interface web pour ajouter un nouveau champ au formulaire. Un peu de HTML ça ne fait pas de mal 😃
 
