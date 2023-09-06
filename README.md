@@ -30,15 +30,11 @@ Les données utilisées pour notre TP sont issues du jeu de données publique de
 
 # Déroulement du TP
 
-## Partie 1: création du modèle
+## Partie 1: entraînement d'un modèle de Machine Learning
 
-**Dans un premier temps nous supprimerons la variable `postcode`**
+L'objectif de cette partie est de créer un modèle de Machine Learning permettant de prédire le prix d'un bien immobilier à partir de certaines caractéristiques. Une fois ce modèle entraîné nous pourrons le sauvegarder et l'utiliser dans notre application web (partie 2).
 
-1. Pour l'instant le preprocessing de nos données se limite à un encodage de la variable `house_type`. Complétez la fonction `transform_house_type` (de manière simple, on cherche à créer une fonction d'encodage de notre variable)
-
-2. Lors de ce tp nous ne cherchons pas à optimiser notre modèle avec les meilleurs hyperparamètres. De ce fait, séparez vos prédicteurs de la valeur à prédire et entraînez un modèle linéaire sur toute les données. Vous pouvez utiliser la [régression linéaire](https://scikit-learn.org/stable/modules/generated/sklearn.linear_model.LinearRegression.html).
-
-3. Lorsque votre modèle est entraîné, sauvegarder ce dernier au format [`pickle`](https://docs.python.org/3/library/pickle.html), appelez le `model.pkl` par exemple. Cette méthode vous permet de sauvegarder votre modèle entraîné dans un fichier qui pourra être utilisé dans notre application web.
+Ouvrez le fichier `main.ipynb` et suivez les instructions pour créer votre modèle.
 
 ## Partie 2: création d'une webapp
 
