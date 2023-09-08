@@ -1,11 +1,11 @@
-# Objectif
+# 🎯 Objectif
 
-Création d'une application web permettant de prédire le prix d'un bien immobilier à partir de certaines caractéristiques. L'objectif de ce TP est de vous familiariser avec les problématiques de déploiement d'un modèle de Machine Learning. Ce TP se déroule en 2 parties:
+Création d'une application web permettant de prédire le prix d'un bien immobilier à partir de certaines caractéristiques. L'objectif de ce TP est de vous familiariser avec les problématiques de développement et de déploiement d'un modèle de Machine Learning. Ce TP se déroule en 2 parties:
 
 1. Création d'un modèle de Machine Learning permettant de prédire le prix d'un bien immobilier
 2. Création d'une webapp permettant de faire appel à ce modèle
 
-# Ressources
+# 🗃️ Ressources
 
 Pour réaliser ce TP vous aurez besoin d'avoir [Python](https://www.python.org/downloads/) installé sur votre ordinateur, ainsi que de pouvoir ouvrir et exécuter un Jupyter notebook. Nous vous conseillons d'installer [VsCode](https://code.visualstudio.com/), un éditeur de code développé par Microsoft, afin de faciliter ce travail.
 
@@ -16,9 +16,13 @@ De plus vous aurez besoin d'être familier avec les éléments suivants:
 - [`Pandas`](https://pandas.pydata.org/) une librairie permettant de manipuler des DataFrame très facilement.
 - [`Flask`](https://flask.palletsprojects.com/en/2.2.x/) est un framework de développement d'appication Web idéal pour créer des APIs.
 
-# Installation
+[TODO] J'imagine que c'est à modifier quand on aura la partie VSCode en ligne \
 
-**Toutes les commandes suivantes sont à exécuter dans un terminal qui peut être lancé sur VSCode**
+# ➕ Installation
+
+**Toutes les commandes suivantes sont à exécuter dans un terminal lancé sur VSCode**
+
+[TODO] Explication de comment ouvrir le terminal \
 
 1. Vous pouvez cloner ce repository en utilisant la commande:
 
@@ -51,11 +55,11 @@ _Note_: `pip` est un outil permettant d'installer des packages Python.
 4. Tout est prêt ! Vous pouvez ouvrir le fichier `main.ipynb` et commencer le TP.
    Le fichier `main.ipynb` est un Jupyter Notebook. C'est un outil très pratique pour faire du développement itératif. Il permet d'exécuter du code Python par bloc et de visualiser les résultats directement dans le notebook.
 
-# Données
+# 📊 Données
 
 Les données utilisées pour notre TP sont issues du jeu de données publique des [valeurs foncières françaises de 2021](https://www.data.gouv.fr/en/datasets/demandes-de-valeurs-foncieres/). Ces données ont été retravaillées pour vous et se trouvent dans le fichier `data.csv`.
 
-# Déroulement du TP
+# 🧑‍💻 Déroulement du TP
 
 ## Partie 1: entraînement d'un modèle de Machine Learning
 
@@ -73,17 +77,19 @@ Afin de développer le backend de notre application web nous utilisons le [frame
 curl localhost:5678
 ```
 
+[TODO] à tester si c'est bien localhost
+
 ou directement depuis votre navigateur http://localhost:5678/hello. Il est possible qu'une URL différente de `localhost` soit affichée dans la console ayant servi à lancer votre programme, dans ce cas utilisez cette dernière.
 
 **Notes**
 
-- `curl` est un outil nous servant ici de client `HTTP`
+- `curl` est un outil nous servant ici de client `HTTP` permettant d'envoyer des requêtes. Les requêtes peuvent être de plusieurs types, par exemple GET pour récupérer des données et POST pour en envoyer.
 - Comme vous pouvez le remarquer lorsque l'on utilise la commande `curl`, la donnée reçue est `<h1>Hello world</h1>`. Lorsque l'on ouvre notre navigateur on peut y voir apparaitre un magnifique **Hello world** formaté. Votre navigateur vous permet de formatter le HTML que vous recevez à l'écran mais ce dernier n'est rien de plus qu'un client HTTP aggrémenté de fonctions d'affichages.
 
 2. Dans le dossier `templates` vous trouverez un fichier _index.html_ qui contient un code HTML un peu plus complexe qu'un simple Hello World. Créer une nouvelle route `/app` permettant de renvoyer à l'utilisateur le contenu de la page _index.html_. Il est possible d'utiliser la fonction `render_template` de Flask.
    Vérifier que votre code fonctionne en vous rendant à l'adresse suivante sur votre navigateur: http://localhost:5678/app.
 
-3. Créer une nouvelle route `/predict` permettant à l'utilisateur de passer des données via un [`form`](https://www.w3schools.com/html/html_forms.asp) (requête POST ou GET à votre avis ?). Cette route devra effectuer dans l'odre:
+3. Créer une nouvelle route `/predict` permettant à l'utilisateur de passer des données via un [`form`](https://www.w3schools.com/html/html_forms.asp) (doit-on utiliser une requête POST ou GET ?). Cette route devra effectuer dans l'odre:
 
 - **Lecture des données**: nous transitons l'information de notre client vers notre backend via un formulaire. Flask permet de récupérer ces données dans le corps de la fonction grâce à [l'objet request](https://www.digitalocean.com/community/tutorials/processing-incoming-request-data-in-flask). Habituellement les formulaires sont utilisés pour les applications Web mais dans le cas de simples APIs il est préférable d'utiliser les formats JSON/XML/Protobuf.
 - **Vérification de la donnée**: est-ce que la donnée contient tous les champs que l'on souhaite (house_type, nb_room, ...) ? Dans le cas où la donnée est mal formattée, renvoyer un [code d'erreur 400](https://developer.mozilla.org/en-US/docs/Web/HTTP/Status/400).
