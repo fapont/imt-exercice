@@ -7,44 +7,57 @@ Création d'une application web permettant de prédire le prix d'un bien immobil
 
 # 🗃️ Ressources
 
-Pour réaliser ce TP vous aurez besoin d'avoir [Python](https://www.python.org/downloads/) installé sur votre ordinateur, ainsi que de pouvoir ouvrir et exécuter un Jupyter notebook. Nous vous conseillons d'installer [VsCode](https://code.visualstudio.com/), un éditeur de code développé par Microsoft, afin de faciliter ce travail.
+Pour réaliser ce TP nous avons besoin d'avoir :
 
-De plus vous aurez besoin d'être familier avec les éléments suivants:
+- [Python](https://www.python.org/downloads/) installé ainsi que de pouvoir travailler avec un Jupyter notebook
+- Un IDE (integrated development environment) afin de pouvoir éditer les fichiers de code. Nous utiliseronw [VsCode](https://code.visualstudio.com/), un éditeur de code développé par Microsoft, afin de faciliter ce travail
 
-- [`Scikit-Learn`](https://scikit-learn.org/stable/) qui est une librairie Python permettant de facilement utiliser des modèles de Machine Learning.
-- [`Pickle`](https://docs.python.org/3/library/pickle.html) permet de sérialiser des objets Python (transformation d'une structure Python en un fichier pouvant être stocké puis reconstruit).
-- [`Pandas`](https://pandas.pydata.org/) une librairie permettant de manipuler des DataFrame très facilement.
-- [`Flask`](https://flask.palletsprojects.com/en/2.2.x/) est un framework de développement d'appication Web idéal pour créer des APIs.
+De plus nous aurons besoin d'être familier avec les librairires python suivantes :
 
-# 👶 Note pour les étudiants
-
-Nous avons mis à disposition pour vous des instances `VSCode` préconfigurées avec tous les outils nécessaires pour ce TP. Vous pouvez y accéder en vous rendant sur le lien suivant: https://onyxia.dev.heka.ai/.
-
-1. Connectez-vous avec les identifiants qui vous ont été fournis via le bouton `Connexion` en haut à droite.
-
-2. Sur le menu vertical à gauche, cliquez sur `Catalogue des services` (icon carré) puis sur le bouton `Lancer` de la carte `VSCode-python`.
-
-3. Laissez la configuration par défaut et cliquez sur `Lancer`.
-
-4. Une note doit s'ouvrir contenant un lien unique vers votre instance, aisin qu'un code à utiliser pour se connecter. Une fois que le message `Ouvrir le service 🚀` apparait, votre instance est prête à être utilisée. Enjoy !
-
-5. Lorsque vous avez fini d'utiliser le service, pensez à éteindre votre instance en cliquant sur l'icon de `Corbeille` sur l'interface.
-
-_Note_:
-
-- le temps de lancement de l'instance peut varier de quelques secondes à plusieurs minutes. Ne vous inquiétez pas si cela prend du temps, l'infrastructure s'adaptera à votre demande.
-- l'URL de votre instance sera de la forme `https://single-project-<random-id>.lab.dev.heka.ai/`
+- [`Scikit-Learn`](https://scikit-learn.org/stable/) : utiliser des modèles de Machine Learning
+- [`Pickle`](https://docs.python.org/3/library/pickle.html) : sérialiser des objets Python (transformation d'une structure Python en un fichier pouvant être stocké puis reconstruit)
+- [`Pandas`](https://pandas.pydata.org/) : manipulation de DataFrame (structure de données)
+- [`Flask`](https://flask.palletsprojects.com/en/2.2.x/) : développement d'application web idéalement conçu pour des APIs
 
 # ➕ Installation
 
-**Toutes les commandes suivantes sont à exécuter dans un terminal lancé sur VSCode**
+## 1. Connexion à l'environnement de travail
 
-0. Lancement d'un terminal sur VSCode:
+Afin de faciliter la réalisation du TP, un environnement de travail vous est fourni. Suivez les indications suivantes :
 
-   - Utiliser le raccourci par défaut: `Ctrl + Shift + ²`
-   - En haut à gauche de VSCode, cliquer sur l'icon contenant 3 traits horizontaux puis sur `Nouveau terminal`
+- Ouvrez le lien suivant https://onyxia.dev.heka.ai/
+- Sur le menu de gauche cliquez sur "Mon Compte"
+- Entre le nom d'utilisateur et le mot de passe qui vous a été fourni et cliquez sur "Connexion"
 
-1. Vous pouvez cloner ce repository en utilisant la commande:
+Vous êtes maintenant connecté à Onyxia ! Il s'agit d'un datalab développé par l'INSEE permettant de facilement lancer des applications.
+
+Cliquez ensuite sur "Catalogue de service". Une page apparait avec les services principaux, l'un d'entre eux se nome "Vscode-python". Cliquez sur "Lancer".
+
+![Alt text](img/image-2.png)
+
+Modifier le nom du service dans la case "Nom personalisé" puis cliquez sur "Lancer".
+
+![Alt text](img/image-1.png)
+
+Copier le mot de passe affiché, cliquez sur le lien présent dans le fenêtre. Vous êtes maintenant redirigé vers le VsCode en ligne, entrez le mot de passe copié et cliquez sur "Submit". \
+Vous êtes maintenant connecté à votre environnement et près à commencer le TP !
+
+_Note_:
+
+- le lancement de l'environnement peut prendre quelques minutes, ne vous inquiétez pas si vous ne voyez pas l'interface de VsCode tout de suite.
+- pour garantir le bon fonctionnement du TP ne modifiez pas les paramètres de lancement de l'instance VSCoe (CPU, RAM, ...)
+
+## 2. Set up du TP
+
+**Toutes les commandes suivantes sont à exécuter dans un terminal**
+
+Afin de lancer un terminal, selectionnez le menu sur la barre latérale gauche puis "Terminal" -> "New Terminal".
+
+![Alt text](img/image-3.png)
+
+Ensuite, effectuez les actions suivantes :
+
+1. Cloner le repository du TP en utilisant la commande suivante:
 
 ```bash
 git clone git@github.com:fapont/imt-exercice.git
@@ -52,22 +65,17 @@ git clone git@github.com:fapont/imt-exercice.git
 
 Cela va créer un dossier `imt-exercice` contenant tous les fichiers nécessaires pour ce TP.
 
-2. Si Python n'est pas installé sur votre ordinateur, vous pouvez le faire en suivant [ce tutoriel](https://realpython.com/installing-python/).
-   Sur les machines utilisées à l'IMT, Python est déjà installé. Vous pouvez vérifier que Python est bien installé en utilisant la commande:
+2. Vérifier que Python est correctement installé
 
 ```bash
-python --version
-ou
 python3 --version
 ```
 
-3. Installer les dépendances nécessaires pour ce TP. Optionnel pour les étudiants utilisant les instances VSCode.
+3. Installer les dépendances nécessaires pour ce TP. Optionnel pour les étudiants utilisant les instances VSCode (vous devriez avoir une erreur sur en lançant cette commande depuis les environnements virtuels que l'on vous a fourni).
 
 ```bash
 cd imt-exercice # Se placer dans le dossier du TP
 pip install -r requirements.txt
-ou
-python3 -m pip install -r requirements.txt
 ```
 
 _Note_: `pip` est un outil permettant d'installer des packages Python.
