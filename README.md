@@ -60,7 +60,7 @@ Ensuite, effectuez les actions suivantes :
 1. Cloner le repository du TP en utilisant la commande suivante:
 
 ```bash
-git clone git@github.com:fapont/imt-exercice.git
+git clone https://github.com/fapont/imt-exercice.git
 ```
 
 Cela va créer un dossier `imt-exercice` contenant tous les fichiers nécessaires pour ce TP.
@@ -97,11 +97,15 @@ Ouvrez le fichier `main.ipynb` et suivez les instructions pour créer votre mod�
 
 ## Partie 2: création d'une webapp
 
-Afin de développer le backend de notre application web nous utilisons le [framework Flask](https://flask.palletsprojects.com/en/2.2.x/). L'objectif de cette partie est de comprendre le fonctionnement des serveurs Web et de s'en servir pour appeler notre modèle et faire de l'inférence grâce à notre modèle. Afin de communiquer avec cette dernière nous utiliserons le protocole `HTTP`, nous vous recommandons de lire cet article expliquant les différentes requêtes possibles (GET, POST, ...) et leur application: https://www.ionos.fr/digitalguide/hebergement/aspects-techniques/requete-http/.
+Afin de développer le backend de notre application web nous utilisons le [framework Flask](https://flask.palletsprojects.com/en/2.2.x/). L'objectif de cette partie est de comprendre le fonctionnement des serveurs Web et de s'en servir pour appeler notre modèle et faire de l'inférence grâce à notre modèle. Afin de communiquer avec cette dernière nous utiliserons le protocole `HTTP`, nous vous recommandons de lire [cet article](https://www.ionos.fr/digitalguide/hebergement/aspects-techniques/requete-http/) expliquant les différentes requêtes possibles (GET, POST, ...) et leur application.
 
-1. Lancez le fichier `app.py` avec la commande `python3 app.py` depuis votre terminal. Votre serveur web va se lancer et être accessible via des requêtes HTTP. Vérifiez que la connexion à votre serveur fonctionne: `curl http://localhost:5678/hello`, ou directement depuis votre navigateur `https://single-project-<random-id>.lab.dev.heka.ai/proxy/5678/hello` à partir des instances VSCode. **Pour la suite du TP on notre `<your-url>` pour remplacer soit `http://localhost:5678` soit `https://single-project-<random-id>.lab.dev.heka.ai/proxy/5678`**.
+1. Lancez le fichier `app.py` avec la commande `python3 app.py` depuis votre terminal. Votre serveur web va se lancer et être accessible via des requêtes HTTP. \
+   Vérifiez que la connexion à votre serveur fonctionne: `curl http://localhost:5678/hello`, ou directement depuis votre navigateur `https://single-project-<random-id>.lab.dev.heka.ai/proxy/5678/hello` à partir des instances VSCode. \
+    **Pour la suite du TP on notre `<your-url>` pour remplacer soit `http://localhost:5678` soit `https://single-project-<random-id>.lab.dev.heka.ai/proxy/5678`**.
 
-2. Dans le dossier `templates` vous trouverez un fichier _index.html_ qui contient un code HTML un peu plus complexe qu'un simple Hello World. Créer une nouvelle route `/app` permettant de renvoyer à l'utilisateur le contenu de la page _index.html_. Il est possible d'utiliser la fonction [`render_template`](https://flask.palletsprojects.com/en/2.0.x/quickstart/#rendering-templates) de Flask pour cela.
+2. Dans le dossier `templates` vous trouverez un fichier _index.html_ qui contient un code HTML un peu plus complexe qu'un simple Hello World. \
+   Créer une nouvelle route `/app` permettant de renvoyer à l'utilisateur le contenu de la page _index.html_. \
+   Il est possible d'utiliser la fonction [`render_template`](https://flask.palletsprojects.com/en/2.0.x/quickstart/#rendering-templates) de Flask pour cela.
    Vérifier que votre code fonctionne en vous rendant à l'adresse suivante sur votre navigateur: `<your-url>/app`.
 
 3. Créer une nouvelle route `/predict` permettant à l'utilisateur de passer des données via un [`form`](https://www.w3schools.com/html/html_forms.asp) (doit-on utiliser une requête POST ou GET ?). Cette route devra effectuer dans l'ordre:
